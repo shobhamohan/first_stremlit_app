@@ -4,6 +4,12 @@ fruityvice_response = requests.get("https://fruityvice.com/api/fruit/watermelon"
 # new section to display api response
 streamlit.header('Fruity Vice Advice!')
 streamlit.text(fruityvice_response.json())
+
+# copying all fruit names into variable
+fruityvice_normalized = pandas.json_normalize(fruityvice_response.json())
+# drop down manu
+streamlit.dataframe(fruityvice_normalized)
+
 streamlit.title('My parents New Healthy Diner')
 streamlit.header('Breakfast Favorites')
 streamlit.text('🥣 Omega 3 & Blueberry Oatmeal')
