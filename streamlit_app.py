@@ -1,9 +1,9 @@
 import streamlit
 import requests
-fruityvice_response = requests.get("https://fruityvice.com/api/fruit/watermelon")
+fruityvice_response = requests.get("https://fruityvice.com/api/fruit/"+"kiwi")
 # new section to display api response
 streamlit.header('Fruity Vice Advice!')
-streamlit.text(fruityvice_response.json())
+#streamlit.text(fruityvice_response.json())
 
 
 
