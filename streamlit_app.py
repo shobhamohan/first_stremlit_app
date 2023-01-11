@@ -1,7 +1,9 @@
 import streamlit
 import requests
 fruityvice_response = requests.get("https://fruityvice.com/api/fruit/watermelon")
-streamlit.text(fruityvice_response)
+# new section to display api response
+streamlit.header('Fruity Vice Advice!')
+streamlit.text(fruityvice_response.json())
 streamlit.title('My parents New Healthy Diner')
 streamlit.header('Breakfast Favorites')
 streamlit.text('🥣 Omega 3 & Blueberry Oatmeal')
