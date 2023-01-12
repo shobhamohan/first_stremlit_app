@@ -1,6 +1,6 @@
 import streamlit
 import requests
-
+import snowflake.connector
 # new section to display api response
 streamlit.header('Fruity Vice Advice!')
 
@@ -32,4 +32,4 @@ streamlit.dataframe(fruits_to_show)
 fruityvice_normalized = pandas.json_normalize(fruityvice_response.json())
 # display in the frame
 streamlit.dataframe(fruityvice_normalized)
-import snowflake.connector
+
