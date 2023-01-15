@@ -17,8 +17,8 @@ try:
   else:
     #streamlit.write('The user entered ', fruit_choice)
     #import requests
-    back_from_function = get_fruityvice_data(fruit_choice)
-  streamlit.dataframe(back_from_function)
+    back_from_fun = get_fruityvice_data(fruit_choice)
+    streamlit.dataframe(back_from_fun)
     
 except URLError as e:
     streamlit.error()
