@@ -77,4 +77,3 @@ if streamlit.button('add a fruit to the list'):
     
 
 #streamlit.write('The user entered ', fruit_choice2)
-
