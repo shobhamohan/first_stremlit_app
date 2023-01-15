@@ -25,6 +25,17 @@ except URLError as e:
     
 #streamlit.text(fruityvice_response.json())
 
+streamlit.header("DATA")
+def get_fruit_load_list():
+    with my_cnx.cursor() as  my_cur:
+        my_cur.execute("select * from fruit_load_list")
+        return my_cur.fetchall()
+    #add button to load fruit list
+    if streamlit.button("get fruit load list"):
+        my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
+        my_data_rows = get_fruit_load_list()
+        streamlit.dataframe(my_data_rows)
+        
 streamlit.title('My parents New Healthy Diner')
 streamlit.header('Breakfast Favorites')
 streamlit.text('🥣 Omega 3 & Blueberry Oatmeal')
@@ -48,16 +59,7 @@ streamlit.dataframe(fruits_to_show)
 #streamlit.dataframe(fruityvice_normalized)
 #import snowflake.connector
 # snowflake related funcitons
-streamlit.header("DATA")
-def get_fruit_load_list():
-    with my_cnx.cursor() as  my_cur:
-        my_cur.execute("select * from fruit_load_list")
-        return my_cur.fetchall()
-    #add button to load fruit list
-    if streamlit.button("get fruit load list"):
-        my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
-        my_data_rows = get_fruit_load_list()
-        streamlit.dataframe(my_data_rows)
+
 streamlit.stop() 
 #my_cur.execute("SELECT CURRENT_USER(), CURRENT_ACCOUNT(), CURRENT_REGION()")
 fruit_choice2 = streamlit.text_input('What fruit you would like add?','jackfruit')
