@@ -35,7 +35,8 @@ def get_fruit_load_list():
         my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
         my_data_rows = get_fruit_load_list()
         streamlit.dataframe(my_data_rows)
-        
+   
+streamlit.header("DATA end ")     
 streamlit.title('My parents New Healthy Diner')
 streamlit.header('Breakfast Favorites')
 streamlit.text('🥣 Omega 3 & Blueberry Oatmeal')
