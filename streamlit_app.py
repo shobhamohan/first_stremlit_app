@@ -26,17 +26,22 @@ except URLError as e:
 #streamlit.text(fruityvice_response.json())
 
 streamlit.header("DATA")
-#streamlit.button("get fruit load list")
+streamlit.button("get fruit load list")
 def get_fruit_load_list():
     with my_cnx.cursor() as  my_cur:
         my_cur.execute("select * from fruit_load_list")
         return my_cur.fetchall()
     #add button to load fruit list
-    if streamlit.button('get fruit load list'):
+    try:
+        if streamlit.button('get fruit load list'):
         my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
         my_data_rows = get_fruit_load_list()
         my_cnx.close()
         streamlit.dataframe(my_data_rows)
+    except URLError as e:
+    streamlit.error()
+    
+   
    
 streamlit.header("DATA end ")     
 streamlit.title('My parents New Healthy Diner')
