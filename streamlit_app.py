@@ -38,7 +38,7 @@ def get_fruit_load_list():
             my_cnx.close()
             streamlit.dataframe(my_data_rows)
     except URLError as e:
-    streamlit.error()
+        streamlit.error()
     
    
    
