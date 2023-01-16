@@ -64,7 +64,7 @@ streamlit.dataframe(fruits_to_show)
 
 #streamlit.stop() 
 #my_cur.execute("SELECT CURRENT_USER(), CURRENT_ACCOUNT(), CURRENT_REGION()")
-my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
+#my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
 def insert_row_snowflake(new_fruit):
     with my_cnx.cursor as my_cur:
         my_cur.execute("insert into fruit_load_list values ('"+ new_fruit +"')")
@@ -72,9 +72,9 @@ def insert_row_snowflake(new_fruit):
     
 add_my_fruit = streamlit.text_input('What fruit you would like add?')
 if streamlit.button('add a fruit to the list'):
-    # my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
-     back_from_function = insert_row_snowflake(add_my_fruit)
-     streamlit.text(back_from_function)
+     my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
+     back_from_function_in = insert_row_snowflake(add_my_fruit)
+     streamlit.text(back_from_function_in)
     
 
 #streamlit.write('The user entered ', fruit_choice2)
