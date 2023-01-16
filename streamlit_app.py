@@ -39,9 +39,7 @@ def get_fruit_load_list():
             streamlit.dataframe(my_data_rows)
     except URLError as e:
         streamlit.error()
-    
-   
-   
+
 streamlit.header("DATA end ")     
 streamlit.title('My parents New Healthy Diner')
 streamlit.header('Breakfast Favorites')
@@ -68,13 +66,12 @@ streamlit.dataframe(fruits_to_show)
 # snowflake related funcitons
 
 #streamlit.stop() 
-#my_cur.execute("SELECT CURRENT_USER(), CURRENT_ACCOUNT(), CURRENT_REGION()")
+my_cur.execute("SELECT CURRENT_USER(), CURRENT_ACCOUNT(), CURRENT_REGION()")
 #my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
 def insert_row_snowflake(new_fruit):
     with my_cnx.cursor as my_cur:
         my_cur.execute("insert into fruit_load_list values ('test')")
         return "Thanks for adding " + new_fruit
-    #"+ new_fruit +"
 add_my_fruit = streamlit.text_input('What fruit you would like add?')
 try:
     if not add_my_fruit:
