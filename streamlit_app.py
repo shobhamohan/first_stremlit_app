@@ -3,6 +3,7 @@ import requests
 import snowflake.connector
 import pandas
 from urllib.error import URLError
+
 # new section to display api response
 streamlit.header('Fruity Vice Advice!')
 #create a funtion 
@@ -23,6 +24,11 @@ except URLError as e:
     streamlit.error()
     
 #streamlit.text(fruityvice_response.json())
+ my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"]) 
+ my_cur = my_cnx.curor()
+ my_cur.execute("SELECT CURRENT_USER(), CURRENT_ACCOUNT(), CURRENT_REGION()")
+ stremlit.stop()
+
 
 streamlit.header("DATA")
 streamlit.button("get fruit load list")
@@ -66,7 +72,7 @@ streamlit.dataframe(fruits_to_show)
 # snowflake related funcitons
 
 #streamlit.stop() 
-my_cur.execute("SELECT CURRENT_USER(), CURRENT_ACCOUNT(), CURRENT_REGION()")
+
 #my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
 def insert_row_snowflake(new_fruit):
     with my_cnx.cursor as my_cur:
