@@ -34,10 +34,10 @@ def get_fruit_load_list():
     #add button to load fruit list
     try:
         if streamlit.button('get fruit load list'):
-        my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
-        my_data_rows = get_fruit_load_list()
-        my_cnx.close()
-        streamlit.dataframe(my_data_rows)
+            my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
+            my_data_rows = get_fruit_load_list()
+            my_cnx.close()
+            streamlit.dataframe(my_data_rows)
     except URLError as e:
     streamlit.error()
     
