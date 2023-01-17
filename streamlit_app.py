@@ -88,7 +88,7 @@ streamlit.header("DATA end ")
 
 #my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
 def insert_row_snowflake(new_fruit):
-    with my_cnx.cursor as my_cur:
+    with my_cnx.cursor() as my_cur:
         streamlit.text("inside the with my cursor")
        #my_cur.execute("insert into fruit_load_list values ('"+ new_fruit +"')")
         my_cur.execute("insert into fruit_load_list values ('test fruit')")
