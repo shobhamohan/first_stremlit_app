@@ -80,7 +80,7 @@ streamlit.dataframe(fruits_to_show)
 #import snowflake.connector
 # snowflake related funcitons
 
-streamlit.stop() 
+#streamlit.stop() 
 
 #my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
 def insert_row_snowflake(new_fruit):
@@ -88,6 +88,7 @@ def insert_row_snowflake(new_fruit):
         my_cur.execute("insert into fruit_load_list values ('test')")
         return "Thanks for adding " + new_fruit
 add_my_fruit = streamlit.text_input('What fruit you would like add?')
+my_cur.execute("insert into fruit_load_list values ('test')")
 try:
     if not add_my_fruit:
         streamlit.error("Please enter fruit")
