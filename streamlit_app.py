@@ -22,12 +22,11 @@ try:
     streamlit.dataframe(back_from_function) 
 except URLError as e:
     streamlit.error()
-    
-#streamlit.text(fruityvice_response.json())
- my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
- my_cur = my_cnx.curor()
- my_cur.execute("SELECT CURRENT_USER(), CURRENT_ACCOUNT(), CURRENT_REGION()")
- stremlit.stop()
+
+my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
+my_cur = my_cnx.curor()
+my_cur.execute("SELECT CURRENT_USER(), CURRENT_ACCOUNT(), CURRENT_REGION()")
+stremlit.stop()
 
 
 streamlit.header("DATA")
