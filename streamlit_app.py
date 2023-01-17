@@ -73,7 +73,7 @@ def get_fruit_load_list():
         streamlit.error()
 
 streamlit.header("DATA end ")     
-#streamlit.stop()
+streamlit.stop()
 
 
 # take the json response  
