@@ -54,7 +54,7 @@ my_data_rows = my_cur.execute("select * from fruit_load_list")
 #streamlit.stop()
 
 streamlit.header("DATA")
-#streamlit.button("get fruit load list")
+#streamlit.button("get fruit list")
 def get_fruit_load_list():
     with my_cnx.cursor() as  my_cur:
         streamlit.text("fun called")
