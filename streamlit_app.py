@@ -1,6 +1,6 @@
 import streamlit
 import requests
-import snowflake.connector
+
 import pandas
 from urllib.error import URLError
 
@@ -22,7 +22,8 @@ try:
     streamlit.dataframe(back_from_function) 
 except URLError as e:
     streamlit.error()
-
+    
+import snowflake.connector
 my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
 my_cur = my_cnx.curor()
 my_cur.execute("SELECT CURRENT_USER(), CURRENT_ACCOUNT(), CURRENT_REGION()")
