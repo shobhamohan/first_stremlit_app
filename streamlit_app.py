@@ -54,7 +54,7 @@ def get_fruit_load_list():
         streamlit.error()
 
 streamlit.header("DATA end ")     
-streamlit.stop()
+#streamlit.stop()
 
 streamlit.title('My parents New Healthy Diner')
 streamlit.header('Breakfast Favorites')
@@ -80,7 +80,7 @@ streamlit.dataframe(fruits_to_show)
 #import snowflake.connector
 # snowflake related funcitons
 
-#streamlit.stop() 
+streamlit.stop() 
 
 #my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
 def insert_row_snowflake(new_fruit):
