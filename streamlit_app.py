@@ -29,7 +29,7 @@ my_cur = my_cnx.cursor()
 my_cur.execute("SELECT CURRENT_USER(), CURRENT_ACCOUNT(), CURRENT_REGION()")
 my_data_row= my_cur.fetchone()
 streamlit.text(my_data_row)
-streamlit.text("testting")
+#streamlit.text("testting")
 my_data_rows = my_cur.execute("select * from fruit_load_list")
 #streamlit.dataframe(my_data_rows)
 #streamlit.stop()
@@ -43,7 +43,7 @@ def get_fruit_load_list():
         return my_cur.fetchall()
     #add button to load fruit list
     try:
-        if streamlit.button('get fruit load list'):
+        if streamlit.button('get fruit load list')==true:
             streamlit.text("in if")
             my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
             my_data_rows = get_fruit_load_list()
