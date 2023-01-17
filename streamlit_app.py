@@ -31,7 +31,7 @@ my_data_row= my_cur.fetchone()
 streamlit.text(my_data_row)
 streamlit.text("testting")
 my_data_rows = my_cur.execute("select * from fruit_load_list")
-streamlit.dataframe(my_data_rows)
+#streamlit.dataframe(my_data_rows)
 #streamlit.stop()
 
 streamlit.header("DATA")
@@ -44,10 +44,11 @@ def get_fruit_load_list():
     #add button to load fruit list
     try:
         if streamlit.button('get fruit load list'):
+            streamlit.text("in if")
             my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
             my_data_rows = get_fruit_load_list()
             #my_cnx.close()
-            streamlit.text("in funtion")
+            #streamlit.text("in funtion")
             streamlit.dataframe(my_data_rows)
     except URLError as e:
         streamlit.error()
