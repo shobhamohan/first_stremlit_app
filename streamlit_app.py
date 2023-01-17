@@ -74,7 +74,7 @@ except URLError as e:
     streamlit.error()
 
 streamlit.header("DATA end ")     
-streamlit.stop()
+#streamlit.stop()
 
 
 # take the json response  
@@ -89,10 +89,10 @@ streamlit.stop()
 #my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
 def insert_row_snowflake(new_fruit):
     with my_cnx.cursor as my_cur:
-        my_cur.execute("insert into fruit_load_list values ('test')")
+        my_cur.execute("insert into fruit_load_list values ('"+ new_fruit +"')")
         return "Thanks for adding " + new_fruit
 add_my_fruit = streamlit.text_input('What fruit you would like add?')
-my_cur.execute("insert into fruit_load_list values ('testout')")
+#my_cur.execute("insert into fruit_load_list values ('testout')")
 try:
     if not add_my_fruit:
         streamlit.error("Please enter fruit")
