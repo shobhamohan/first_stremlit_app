@@ -60,17 +60,18 @@ def get_fruit_load_list():
         streamlit.text("fun called")
         my_cur.execute("select * from fruit_load_list")
         return my_cur.fetchall()
-    #add button to load fruit list
-    try:
-        if streamlit.button('get fruit load list'):
-            streamlit.text("in if")
-            my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
-            my_data_rows = get_fruit_load_list()
-            #my_cnx.close()
-            #streamlit.text("in funtion")
-            streamlit.dataframe(my_data_rows)
-    except URLError as e:
-        streamlit.error()
+    
+#add button to load fruit list
+try:
+    if streamlit.button('get fruit load list'):
+        streamlit.text("in if")
+        my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
+        my_data_rows = get_fruit_load_list()
+        #my_cnx.close()
+        #streamlit.text("in funtion")
+        streamlit.dataframe(my_data_rows)
+except URLError as e:
+    streamlit.error()
 
 streamlit.header("DATA end ")     
 streamlit.stop()
